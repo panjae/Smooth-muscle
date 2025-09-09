@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 13: Smooth Muscle - Comprehensive Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            min-height: 100vh;
+        }
+        
+        /* Navigation */
+        .nav-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 20px 40px;
+            color: white;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .nav-header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .nav-menu {
+            background: #34495e;
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 95px;
+            z-index: 99;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .nav-menu a:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+        }
+        
+        /* Content Sections */
+        .content-wrapper {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 6px solid #3498db;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            font-size: 2.2em;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .section h3 {
+            font-size: 1.6em;
+            color: #2c3e50;
+            margin: 25px 0 15px 0;
+            background: #ecf0f1;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .section h4 {
+            font-size: 1.3em;
+            color: #34495e;
+            margin: 20px 0 10px 0;
+            padding: 8px 15px;
+            background: #fff;
+            border-radius: 6px;
+            border-left: 3px solid #f39c12;
+        }
+        
+        .content-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 25px;
+        }
+        
+        .highlight-text {
+            background: #fff3cd;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .feature-list li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+        
+        /* Image Containers */
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .image-caption {
+            font-size: 1em;
+            color: #7f8c8d;
+            margin-top: 15px;
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        /* Tables */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Key Points */
+        .key-point {
+            background: #fef9e7;
+            border: 2px solid #f39c12;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .key-point h4 {
+            color: #e67e22;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .key-point p {
+            color: #34495e;
+            line-height: 1.7;
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-top:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                padding: 20px;
+            }
+            
+            .nav-header h1 {
+                font-size: 2em;
+            }
+            
+            .nav-menu a {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Navigation Header -->
+        <div class="nav-header">
+            <h1>Chapter 13: Smooth Muscle</h1>
+            <p>Comprehensive Guide to Structure, Function, and Regulation</p>
+        </div>
+        
+        <!-- Navigation Menu -->
+        <div class="nav-menu">
+            <a href="#overview">I. Overview</a>
+            <a href="#structure">II. Structure</a>
+            <a href="#ec-coupling">III. EC Coupling</a>
+            <a href="#regulation">Regulation</a>
+            <a href="#cytoskeletal">IV. Cytoskeletal</a>
+            <a href="#types">V. Types</a>
+        </div>
+        
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+            
+            <!-- Section I: Overview -->
+            <section id="overview" class="section">
+                <h2>I. OVERVIEW</h2>
+                
+                <div class="intro-box">
+                    <p class="content-text">
+                        Smooth muscle is found in the walls of hollow organs and blood vessels throughout the body. 
+                        Unlike skeletal muscle, smooth muscle lacks striations and is under involuntary control. 
+                        It plays crucial roles in regulating blood pressure, moving food through the digestive tract, 
+                        and controlling airway diameter.
+                    </p>
+                </div>
+
+                <h3>Key Characteristics</h3>
+                <ul class="feature-list">
+                    <li><strong>Involuntary control:</strong> Regulated by autonomic nervous system</li>
+                    <li><strong>No striations:</strong> Lacks the regular arrangement of sarcomeres</li>
+                    <li><strong>Single nucleus:</strong> Each cell contains one centrally located nucleus</li>
+                    <li><strong>Gap junctions:</strong> Allow electrical and chemical coupling between cells</li>
+                    <li><strong>Slow, sustained contractions:</strong> Can maintain tension for long periods</li>
+                    <li><strong>Length adaptation:</strong> Can function over a wide range of lengths</li>
+                </ul>
+
+                <h3>Location and Function</h3>
+                <div class="content-text">
+                    Smooth muscle is found in three main locations:
+                </div>
+                <ul class="feature-list">
+                    <li><strong>Blood vessels:</strong> Controls vascular diameter and blood pressure</li>
+                    <li><strong>Gastrointestinal tract:</strong> Propels food through peristalsis</li>
+                    <li><strong>Other hollow organs:</strong> Bladder, uterus, airways, and pupils</li>
+                </ul>
+            </section>
+
+            <!-- Section II: Structure -->
+            <section id="structure" class="section">
+                <h2>II. STRUCTURE</h2>
+                
+                <div class="intro-box">
+                    <p class="content-text">
+                        Smooth muscle develops force through <strong>actin-myosin interactions</strong>. 
+                        Myosin concentrations are much lower than in skeletal muscle, but actin levels are similar. 
+                        Individual cells contain <span class="highlight-text">minisarcomeres</span> - small contractile units 
+                        that lack regular alignment, resulting in no visible striations.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <img src="smooth_muscle.png" alt="Smooth Muscle Structure">
+                    <p class="image-caption">
+                        Smooth muscle structure showing contractile filaments and cellular organization
+                    </p>
+                </div>
+
+                <h3>A. Contractile Units</h3>
+                
+                <h4>1. Thick Filaments</h4>
+                <ul class="feature-list">
+                    <li>Hexameric myosin structure</li>
+                    <li>2 myosin heavy chains (MHCs)</li>
+                    <li>2 pairs of light chains: 17-kDa essential LC and 20-kDa MLC20 (regulatory)</li>
+                    <li>Length: ~1.6 μm</li>
+                    <li>ATPase activity in heads</li>
+                </ul>
+                
+                <h4>2. Thin Filaments</h4>
+                <ul class="feature-list">
+                    <li>Length: 4.5 μm</li>
+                    <li>SMA isoforms: α-SMA (vascular) and γ-SMA (GI tract)</li>
+                    <li><span class="highlight-text">NO troponin</span></li>
+                    <li>Ca²⁺-dependent inhibitors: Caldesmon and Calponin</li>
+                </ul>
+
+                <h3>B. Assembly</h3>
+                <div class="content-text">
+                    Contractile units must align with direction of pull for useful force generation:
+                </div>
+                
+                <h4>Dense Bodies</h4>
+                <ul class="feature-list">
+                    <li>α-actinin-rich structures</li>
+                    <li>Scattered throughout sarcoplasm</li>
+                    <li><strong>= Z disk equivalent</strong></li>
+                    <li>Anchor contractile units</li>
+                </ul>
+                
+                <h4>Intermediate Filaments</h4>
+                <ul class="feature-list">
+                    <li><strong>Vimentin & Desmin</strong></li>
+                    <li>Cytoskeletal framework</li>
+                    <li>Align contractile arrays</li>
+                    <li>Type varies by location</li>
+                </ul>
+                
+                <h4>Focal Adhesions</h4>
+                <ul class="feature-list">
+                    <li>Dense plaques at membrane</li>
+                    <li><strong>~80 proteins</strong> complex</li>
+                    <li>Actin-binding proteins</li>
+                    <li>Integrins</li>
+                    <li>Link to ECM & cells</li>
+                    <li>Force transmission</li>
+                </ul>
+
+                <h3>C. Membrane Systems</h3>
+                
+                <div class="intro-box">
+                    <p class="content-text">
+                        Contraction in smooth muscle is initiated when intracellular <strong>Ca²⁺ concentration rises above rest (0.1 μM)</strong>. 
+                        Unlike striated muscle with T-tubules and SR tetrads, smooth muscle uses <span class="highlight-text">caveolae</span> 
+                        and multiple Ca²⁺ sources including sarcolemmal influx and SR release via both CICR and IP₃ pathways.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <img src="ca2_signaling.png" alt="Calcium Signaling Pathways in Smooth Muscle">
+                    <p class="image-caption">
+                        Ca²⁺ signaling pathways showing extracellular influx, CICR, and IP₃-mediated release mechanisms
+                    </p>
+                </div>
+
+                <h4>1. Sarcolemma</h4>
+                <ul class="feature-list">
+                    <li><strong>NO T-tubules</strong> (vs skeletal)</li>
+                    <li><span class="highlight-text">Caveolae</span>: 50-100 nm flask-shaped pockets</li>
+                    <li>Form 15-30 nm junctions with SR</li>
+                    <li>Contain lipid rafts enriched with GPCRs and L-type Ca²⁺ channels</li>
+                </ul>
+                
+                <h4>2. Sarcoplasmic Reticulum</h4>
+                <ul class="feature-list">
+                    <li>Extensive tubular networks</li>
+                    <li>Ca²⁺ concentration: ~1 mM</li>
+                    <li>CICR channels: Opened by Ca²⁺ influx</li>
+                    <li>IP₃-gated channels: GPCR activation</li>
+                </ul>
+
+                <h3>D. Neuromuscular Junction</h3>
+                <div class="content-text">
+                    Smooth muscle is regulated by the <strong>autonomic nervous system (ANS)</strong>, 
+                    unlike skeletal muscle's somatic control:
+                </div>
+                
+                <ul class="feature-list">
+                    <li><strong>Sympathetic</strong> nervous system</li>
+                    <li><strong>Parasympathetic</strong> nervous system</li>
+                    <li><strong>Enteric</strong> nervous system (GI)</li>
+                    <li>Less developed than skeletal NMJ</li>
+                    <li><span class="highlight-text">Varicosities</span>: Multiple NMJ sites</li>
+                    <li>Multiple neurotransmitters: NE, ACh, NO, VIP, ATP</li>
+                </ul>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Smooth Muscle</th>
+                            <th>Skeletal Muscle</th>
+                            <th>Functional Significance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Contractile unit</strong></td>
+                            <td>Minisarcomeres (irregular)</td>
+                            <td>Sarcomeres (regular)</td>
+                            <td>No striations, flexible contraction</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ca²⁺ regulation</strong></td>
+                            <td>Calmodulin → MLCK → Myosin-P</td>
+                            <td>Ca²⁺ → Troponin → Tropomyosin</td>
+                            <td>Thick filament regulation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anchoring</strong></td>
+                            <td>Dense bodies (scattered)</td>
+                            <td>Z disks (aligned)</td>
+                            <td>Multidirectional force</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section III: Excitation-Contraction Coupling -->
+            <section id="ec-coupling" class="section">
+                <h2>III. EXCITATION-CONTRACTION COUPLING</h2>
+                
+                <div class="intro-box">
+                    <p class="content-text">
+                        Smooth muscle contraction is regulated by <strong>Ca²⁺-calmodulin-dependent myosin light chain kinase (MLCK)</strong>. 
+                        Unlike skeletal muscle where Ca²⁺ regulates thin filaments, smooth muscle regulation occurs on the thick filament 
+                        through phosphorylation of the 20-kDa myosin light chain (MLC20).
+                    </p>
+                </div>
+
+                <h3>A. Initiation</h3>
+                <div class="content-text">
+                    Smooth muscle contraction begins with an increase in intracellular Ca²⁺ concentration:
+                </div>
+                
+                <ul class="feature-list">
+                    <li><strong>Ca²⁺ influx:</strong> Through L-type channels, ROCCs, and SOCs</li>
+                    <li><strong>Ca²⁺ release:</strong> From SR via CICR and IP₃ pathways</li>
+                    <li><strong>Ca²⁺-Calmodulin binding:</strong> Forms Ca₄-CaM complex</li>
+                    <li><strong>MLCK activation:</strong> Ca₄-CaM activates myosin light chain kinase</li>
+                </ul>
+
+                <h3>B. Cross-bridge Cycling</h3>
+                <div class="content-text">
+                    The molecular mechanism of smooth muscle contraction follows these steps:
+                </div>
+                
+                <ol class="feature-list">
+                    <li><strong>MLC20 phosphorylation:</strong> MLCK phosphorylates Ser19 on MLC20</li>
+                    <li><strong>Myosin activation:</strong> Phosphorylated myosin can bind actin</li>
+                    <li><strong>Cross-bridge cycling:</strong> ATP-dependent cycling generates force</li>
+                    <li><strong>Force maintenance:</strong> Latchbridge formation for sustained contraction</li>
+                </ol>
+
+                <h3>C. Relaxation</h3>
+                
+                <div class="intro-box">
+                    <p class="content-text">
+                        Muscle relaxation occurs when sarcoplasmic Ca²⁺ concentrations renormalize. Because smooth muscle contraction involves 
+                        a kinase and phosphorylation step, relaxation requires a phosphatase. Unique to smooth muscle is the 
+                        <span class="highlight-text">latchbridge state</span>, allowing sustained contraction with minimal ATP use 
+                        (~1% of skeletal muscle requirement).
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <img src="ca2_relaxation.png" alt="Calcium Relaxation Mechanisms in Smooth Muscle">
+                    <p class="image-caption">
+                        Ca²⁺ relaxation pathways showing removal mechanisms, store refill, and latchbridge formation
+                    </p>
+                </div>
+
+                <h4>1. Ca²⁺ Renormalization</h4>
+                <ul class="feature-list">
+                    <li><strong>Ca²⁺ extrusion:</strong> Ca²⁺-ATPases (PMCA) and Na⁺-Ca²⁺ exchangers (NCX)</li>
+                    <li><strong>SR reuptake:</strong> SERCA pumps (ATP-dependent)</li>
+                    <li>MLCK deactivates when [Ca²⁺] falls</li>
+                </ul>
+                
+                <h4>2. Store Refill</h4>
+                <ul class="feature-list">
+                    <li><strong>SOC mechanism:</strong> Store-operated Ca²⁺ channels</li>
+                    <li>Stim1 senses SR depletion</li>
+                    <li>Signals to Orai (SOC subunit)</li>
+                    <li>Sustained Ca²⁺ influx for SR refill</li>
+                </ul>
+                
+                <h4>3. Dephosphorylation</h4>
+                <ul class="feature-list">
+                    <li><strong>MLCP components:</strong> PP1c, MYPT1, 20-kDa subunit</li>
+                    <li>Constitutively active phosphatase</li>
+                    <li>Always opposing MLCK</li>
+                    <li>Strips phosphate from MLC20</li>
+                </ul>
+
+                <h3>D. Latchbridge Formation</h3>
+                <div class="content-text">
+                    Unique to smooth muscle: sustained force with <span class="highlight-text">minimal ATP use</span>
+                </div>
+                
+                <h4>Mechanism</h4>
+                <ul class="feature-list">
+                    <li>Myosin dephosphorylated <strong>while attached</strong> to actin</li>
+                    <li>Locks or "latches" in place</li>
+                    <li>Intrinsically slow cycling rate</li>
+                    <li>Maintains tension with minimal energy</li>
+                </ul>
+                
+                <div class="key-point">
+                    <h4>💡 Fundamental Property: Latchbridge State</h4>
+                    <p>
+                        The <strong>latchbridge mechanism</strong> is a unique and fundamental property of smooth muscle that enables 
+                        prolonged contractions essential for physiologic functions. When myosin is dephosphorylated while still attached to actin, 
+                        it becomes "locked" in place with an intrinsically slow cycling rate. This allows blood vessels to maintain tone, 
+                        sphincters to stay closed, and hollow organs to sustain pressure for <strong>hours with only ~1% of the ATP</strong> 
+                        that skeletal muscle would require.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section: Regulation -->
+            <section id="regulation" class="section">
+                <h2>REGULATION OF SMOOTH MUSCLE CONTRACTION</h2>
+                
+                <div class="intro-box">
+                    <p class="content-text">
+                        Smooth muscle contraction is regulated through multiple pathways that modulate the Ca²⁺-calmodulin-MLCK system. 
+                        These include Ca²⁺ sensitization mechanisms, protein kinase pathways, and pharmacological modulators that 
+                        fine-tune contractile responses.
+                    </p>
+                </div>
+
+                <h3>Ca²⁺ Sensitization</h3>
+                <ul class="feature-list">
+                    <li><strong>RhoA/Rho-kinase pathway:</strong> Inhibits MLCP, increasing Ca²⁺ sensitivity</li>
+                    <li><strong>Protein kinase C:</strong> Phosphorylates CPI-17, inhibiting MLCP</li>
+                    <li><strong>Arachidonic acid metabolites:</strong> Modulate Ca²⁺ sensitivity</li>
+                </ul>
+
+                <h3>Pharmacological Regulation</h3>
+                <ul class="feature-list">
+                    <li><strong>Ca²⁺ channel blockers:</strong> Nifedipine, verapamil (reduce Ca²⁺ influx)</li>
+                    <li><strong>β-adrenergic agonists:</strong> Increase cAMP, promote relaxation</li>
+                    <li><strong>Nitric oxide:</strong> Increases cGMP, activates protein kinase G</li>
+                    <li><strong>Phosphodiesterase inhibitors:</strong> Maintain high cAMP/cGMP levels</li>
+                </ul>
+            </section>
+
+            <!-- Section IV: Cytoskeletal Remodeling -->
+            <section id="cytoskeletal" class="section">
+                <h2>IV. CYTOSKELETAL REMODELING</h2>
+                
+                <div class="intro-box">
+                    <p class="content-text">
+                        In addition to the traditional contractile unit (minisarcomere), the cytoskeleton also plays a role in smooth force production. 
+                        This force production is minor compared to that of the minisarcomere, but two benefits of cytoskeletal changes are adapting 
+                        to changes in length and altering rigidity.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <img src="cytoskeletal_remodeling.png" alt="Smooth Muscle Cytoskeletal Remodeling Process">
+                    <p class="image-caption">
+                        Cytoskeletal remodeling in smooth muscle showing length adaptation and isoform switching mechanisms
+                    </p>
+                </div>
+
+                <h3>A. Length Adaptation</h3>
+                <div class="content-text">
+                    Smooth muscle can adapt to chronic changes in length by remodeling its cytoskeleton:
+                </div>
+                
+                <ul class="feature-list">
+                    <li><strong>Sarcomere addition/subtraction:</strong> Adjusts optimal length</li>
+                    <li><strong>Dense body repositioning:</strong> Reorganizes contractile apparatus</li>
+                    <li><strong>Intermediate filament remodeling:</strong> Maintains structural integrity</li>
+                    <li><strong>Time course:</strong> Days to weeks for complete adaptation</li>
+                </ul>
+
+                <h3>B. Alternate Actin and Myosin Isoforms</h3>
+                <div class="content-text">
+                    Different smooth muscle types express distinct protein isoforms:
+                </div>
+                
+                <ul class="feature-list">
+                    <li><strong>α-smooth muscle actin:</strong> Vascular and visceral smooth muscle</li>
+                    <li><strong>γ-smooth muscle actin:</strong> Primarily in GI tract</li>
+                    <li><strong>Myosin heavy chain isoforms:</strong> SM1 and SM2 variants</li>
+                    <li><strong>Functional consequences:</strong> Different contractile velocities and Ca²⁺ sensitivity</li>
+                </ul>
+            </section>
+
+            <!-- Section V: Types -->
+            <section id="types" class="section">
+                <h2>V. TYPES</h2>
+                
+                <div class="intro-box">
+                    <p class="content-text">
+                        Smooth muscle is a diverse tissue type that can be difficult to classify. One of the more helpful classifications 
+                        is based on function. Phasic smooth muscle contracts transiently when stimulated, while tonic smooth muscle is capable of sustained contractions.
+                    </p>
+                </div>
+
+                <div class="image-container">
+                    <img src="phasic_tonic.png" alt="Phasic vs Tonic Smooth Muscle Types">
+                    <p class="image-caption">
+                        Comparison of phasic (single unit) and tonic (multi unit) smooth muscle types showing structural and functional differences
+                    </p>
+                </div>
+
+                <h3>Phasic Smooth Muscle</h3>
+                <ul class="feature-list">
+                    <li><strong>Location:</strong> GI tract, urogenital tract</li>
+                    <li><strong>Function:</strong> Transient contractions</li>
+                    <li><strong>Structure:</strong> Single unit (unitary) smooth muscle</li>
+                    <li><strong>Coupling:</strong> Extensive gap junctions</li>
+                    <li><strong>Contraction speed:</strong> Faster than tonic</li>
+                    <li><strong>Examples:</strong> Stomach, intestines, bladder, uterus</li>
+                </ul>
+
+                <h3>Tonic Smooth Muscle</h3>
+                <ul class="feature-list">
+                    <li><strong>Location:</strong> Blood vessels, sphincters, airways</li>
+                    <li><strong>Function:</strong> Sustained contractions</li>
+                    <li><strong>Structure:</strong> Multi-unit smooth muscle</li>
+                    <li><strong>Coupling:</strong> Limited gap junctions</li>
+                    <li><strong>Contraction speed:</strong> Slower, more sustained</li>
+                    <li><strong>Examples:</strong> Arteries, iris muscles, ciliary muscles</li>
+                </ul>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Phasic Smooth Muscle</th>
+                            <th>Tonic Smooth Muscle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Gap junctions</strong></td>
+                            <td>Extensive</td>
+                            <td>Limited</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Electrical coupling</strong></td>
+                            <td>Strong</td>
+                            <td>Weak</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Innervation</strong></td>
+                            <td>Single neuron → many cells</td>
+                            <td>Individual innervation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contraction pattern</strong></td>
+                            <td>Synchronized waves</td>
+                            <td>Independent contractions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Primary function</strong></td>
+                            <td>Propulsion, mixing</td>
+                            <td>Tone maintenance, regulation</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="key-point">
+                    <h4>💡 Functional Significance</h4>
+                    <p>
+                        Most organs contain a blend of phasic and tonic smooth muscle tailored to specific functional needs. 
+                        This allows for both rapid, coordinated responses (phasic) and sustained regulatory control (tonic), 
+                        providing the versatility needed for complex physiological processes.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Summary Section -->
+            <section class="section">
+                <h2>CHAPTER SUMMARY</h2>
+                
+                <div class="key-point">
+                    <h4>🎯 Key Concepts</h4>
+                    <p>
+                        Smooth muscle is a highly adaptable tissue that provides both phasic contractions for organ function 
+                        and tonic contractions for regulatory control. Its unique features include Ca²⁺-calmodulin regulation, 
+                        latchbridge formation for energy-efficient sustained contraction, cytoskeletal remodeling for length adaptation, 
+                        and diverse functional types suited to specific physiological roles. Understanding these mechanisms is 
+                        essential for comprehending cardiovascular, gastrointestinal, and other organ system functions.
+                    </p>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Scroll to top button -->
+        <button class="scroll-top" onclick="scrollToTop()" title="Scroll to top">↑</button>
+    </div>
+    
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.querySelector('.scroll-top');
+            if (window.pageYOffset > 300) {
+                scrollTop.style.display = 'block';
+            } else {
+                scrollTop.style.display = 'none';
+            }
+        });
+
+        // Highlight current section in navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 200;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.background = '';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.background = '#3498db';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

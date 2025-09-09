@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Muscle Types Simulation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+        
+        /* Content Section */
+        .content-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .subsection {
+            margin-bottom: 30px;
+        }
+        
+        .subsection-title {
+            font-size: 1.4em;
+            color: #34495e;
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .subsection-title:before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+        
+        .content-text {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        .key-points {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .key-points li {
+            padding: 8px 0;
+            color: #444;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .key-points li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .example-box {
+            background: #e8f4fd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #3498db;
+        }
+        
+        .example-box-title {
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .sub-subsection {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        
+        .sub-subsection-title {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        /* Simulation Section */
+        .simulation-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 3px solid #e1e4e8;
+        }
+        
+        .simulation-title {
+            font-size: 1.6em;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+            min-width: 150px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .btn-phasic {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+        
+        .btn-tonic {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+        
+        .btn-compare {
+            background: linear-gradient(135deg, #fa709a, #fee140);
+        }
+        
+        .btn-reset {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+        }
+        
+        .simulation-area {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            min-height: 500px;
+        }
+        
+        .comparison-panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .muscle-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .panel-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e1e4e8;
+        }
+        
+        .muscle-visualization {
+            position: relative;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Phasic muscle cells */
+        .phasic-cells {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            position: relative;
+        }
+        
+        .muscle-cell {
+            width: 80px;
+            height: 120px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-radius: 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+        }
+        
+        .cell-nucleus {
+            width: 20px;
+            height: 30px;
+            background: #8e44ad;
+            border-radius: 50%;
+            position: absolute;
+        }
+        
+        /* Gap junctions */
+        .gap-junction {
+            position: absolute;
+            width: 20px;
+            height: 8px;
+            background: #ffd700;
+            border-radius: 4px;
+            z-index: 2;
+        }
+        
+        .gap-h1 { top: 60px; right: -10px; }
+        .gap-h2 { top: 60px; right: -10px; }
+        .gap-v1 { bottom: -4px; left: 35px; transform: rotate(90deg); }
+        .gap-v2 { bottom: -4px; left: 35px; transform: rotate(90deg); }
+        
+        /* Tonic muscle cells */
+        .tonic-cells {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+        
+        .tonic-cell {
+            width: 80px;
+            height: 120px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border-radius: 40px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+        }
+        
+        /* Neurons */
+        .neuron {
+            position: absolute;
+            width: 3px;
+            background: #2c3e50;
+            transform-origin: top;
+        }
+        
+        .neuron-terminal {
+            position: absolute;
+            bottom: -10px;
+            left: -8px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #e67e22, #d35400);
+            border-radius: 50%;
+        }
+        
+        .phasic-neuron {
+            height: 80px;
+            top: -60px;
+            left: 140px;
+        }
+        
+        .tonic-neurons {
+            position: absolute;
+            top: -60px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .tonic-neuron {
+            height: 80px;
+            position: relative;
+        }
+        
+        /* Electrical wave animation */
+        @keyframes electricWave {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .electrical-wave {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            background-size: 200% 100%;
+            animation: electricWave 2s linear infinite;
+            display: none;
+        }
+        
+        .phasic-active .electrical-wave {
+            display: block;
+        }
+        
+        /* Varicosities */
+        .varicosity {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, #e74c3c, #c0392b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .var1 { bottom: 20px; }
+        .var2 { bottom: 50px; }
+        
+        /* Action potential visualization */
+        @keyframes actionPotential {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(0.8); opacity: 0; }
+        }
+        
+        .ap-wave {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #e74c3c;
+            border-radius: 50%;
+            display: none;
+        }
+        
+        .active .ap-wave {
+            display: block;
+            animation: actionPotential 1s ease-out infinite;
+        }
+        
+        /* Contraction animation */
+        @keyframes contract {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.7); }
+        }
+        
+        .contracting {
+            animation: contract 1.5s ease-in-out infinite;
+        }
+        
+        .characteristics-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-size: 0.95em;
+        }
+        
+        .characteristics-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .characteristics-box li {
+            padding: 5px 0;
+            color: #555;
+        }
+        
+        .characteristics-box li:before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width: 768px) {
+            .comparison-panels {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Smooth Muscle Types</h1>
+            <p>Phasic and Tonic Smooth Muscle Classification</p>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <h2 class="section-title">V. TYPES</h2>
+            
+            <p class="content-text">
+                Smooth muscle is a diverse tissue type that can be difficult to classify. One of the more helpful classifications 
+                is based on function. Phasic smooth muscle contracts transiently when stimulated. Examples include muscles that 
+                make up the walls of the GI tract (stomach, small intestine, large intestine) and urogenital tract (ureters, 
+                urinary bladder, vas deferens, fallopian tube, uterus). Tonic smooth muscle is capable of sustained contractions, 
+                a feature that is often used to maintain a constant muscular tone. Examples include larger blood vessels, 
+                GI sphincters (e.g., lower esophageal sphincter, pyloric sphincter), and eye ciliary and iris muscles. 
+                Most organs usually contain a blend of phasic and tonic smooth muscle tailored to specific functional needs.
+            </p>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">A. Phasic Smooth Muscle</h3>
+                
+                <p class="content-text">
+                    Phasic smooth muscle functions as a single unit, with all myocytes within the unit being interconnected 
+                    by gap junctions. Changes in the membrane potential (Vm) of one cell spreads via gap junctions until it 
+                    eventually affects all cells within the unit. Skeletal muscle contractions are all-or-nothing events, 
+                    but smooth muscle may respond to depolarization with a graded contraction; an AP and a stronger contraction; 
+                    or show no response, depending on location.
+                </p>
+                
+                <div class="key-points">
+                    <ul>
+                        <li>Functions as a single unit (unitary smooth muscle)</li>
+                        <li>Cells interconnected by gap junctions allowing electrical coupling</li>
+                        <li>Contracts and relaxes several times faster than tonic smooth muscle</li>
+                        <li>Express fast isoforms of MLC, MHC, and increased MLCK and MYPT1</li>
+                        <li>10- to 20-fold slower than skeletal muscle myosin isoforms</li>
+                        <li>May be initiated by nerves or pacemakers</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-subsection">
+                    <h4 class="sub-subsection-title">1. Action Potentials</h4>
+                    <p class="content-text">
+                        Smooth muscle APs are characteristically slow and their form and time course highly variable. 
+                        The upstroke is mediated by L-type Ca²⁺ channels. Ca²⁺ influx simultaneously initiates contraction 
+                        and opens large-conductance Ca²⁺-activated K⁺ channels (BK channels). Ca²⁺-channel inactivation 
+                        and BK-mediated K⁺ efflux together help repolarize the membrane and yield the AP downstroke.
+                    </p>
+                </div>
+                
+                <div class="sub-subsection">
+                    <h4 class="sub-subsection-title">2. Pacemakers</h4>
+                    <p class="content-text">
+                        Some cells are capable of generating spontaneous Vm changes. In the GI tract, for example, 
+                        interstitial cells of Cajal are pacemakers that generate electrical "slow waves" with a periodicity 
+                        of ~3 to 20 cycles per minute, depending on location. These waves spread via gap junctions to 
+                        adjacent smooth muscle cells and then through the entire muscle body.
+                    </p>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example-box-title">📌 Examples of Phasic Smooth Muscle</div>
+                    <p>
+                        • GI tract walls (stomach, intestines)<br>
+                        • Urogenital tract (bladder, ureters, uterus)<br>
+                        • Small airways in lungs<br>
+                        • Function: Rhythmic contractions for propulsion
+                    </p>
+                </div>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">B. Tonic Smooth Muscle</h3>
+                
+                <p class="content-text">
+                    Tonic smooth muscle resembles skeletal muscle in that individual myocytes or groups of myocytes function 
+                    independently of their neighbors. This feature allows for fine control over movements, which is advantageous 
+                    for precise control of pupillary diameter and eye lens shape, for example. Multiunit control also allows 
+                    force to be ramped up through recruitment, much as skeletal muscle force is controlled using combinations 
+                    of discrete motor units.
+                </p>
+                
+                <div class="key-points">
+                    <ul>
+                        <li>Individual myocytes function independently (multiunit smooth muscle)</li>
+                        <li>Allows fine control and graded responses through recruitment</li>
+                        <li>Typically does not generate action potentials</li>
+                        <li>Contraction may occur without Vm change through receptor-operated pathways</li>
+                        <li>Express slower isoforms of MLC, MHC, and regulatory enzymes</li>
+                        <li>Well suited for sustained force production</li>
+                    </ul>
+                </div>
+                
+                <div class="example-box">
+                    <div class="example-box-title">📌 Examples of Tonic Smooth Muscle</div>
+                    <p>
+                        • Large blood vessels (arteries, veins)<br>
+                        • GI sphincters (lower esophageal, pyloric)<br>
+                        • Eye muscles (iris, ciliary muscle)<br>
+                        • Function: Sustained tone and precise control
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simulation Section -->
+        <div class="simulation-section">
+            <h2 class="simulation-title">🔬 Figure 13.8: Smooth Muscle Types Simulation</h2>
+
+            <!-- Phasic Tonic PNG Image Section -->
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="phasic_tonic.png" alt="Phasic vs Tonic Smooth Muscle Types" 
+                     style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                <p style="font-size: 1em; color: #7f8c8d; margin-top: 10px; font-style: italic;">
+                    Comparison of phasic (single unit) and tonic (multi unit) smooth muscle types showing structural and functional differences
+                </p>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-phasic" onclick="showPhasic()">🔴 Phasic Type</button>
+                <button class="btn btn-tonic" onclick="showTonic()">🔵 Tonic Type</button>
+                <button class="btn btn-compare" onclick="showComparison()">⚖️ Compare Both</button>
+                <button class="btn btn-reset" onclick="resetSimulation()">↺ Reset</button>
+            </div>
+
+            <div class="simulation-area">
+                <div class="comparison-panels">
+                    <!-- Phasic Smooth Muscle Panel -->
+                    <div class="muscle-panel" id="phasicPanel">
+                        <div class="panel-title">Phasic Smooth Muscle (Single Unit)</div>
+                        <div class="muscle-visualization">
+                            <div class="phasic-cells" id="phasicCells">
+                                <div class="muscle-cell" id="pc1">
+                                    <div class="cell-nucleus"></div>
+                                    <div class="gap-junction gap-h1"></div>
+                                    <div class="gap-junction gap-v1"></div>
+                                    <div class="ap-wave"></div>
+                                </div>
+                                <div class="muscle-cell" id="pc2">
+                                    <div class="cell-nucleus"></div>
+                                    <div class="gap-junction gap-h2"></div>
+                                    <div class="gap-junction gap-v2"></div>
+                                    <div class="ap-wave"></div>
+                                </div>
+                                <div class="muscle-cell" id="pc3">
+                                    <div class="cell-nucleus"></div>
+                                    <div class="ap-wave"></div>
+                                </div>
+                                <div class="muscle-cell" id="pc4">
+                                    <div class="cell-nucleus"></div>
+                                    <div class="gap-junction gap-h1"></div>
+                                    <div class="ap-wave"></div>
+                                </div>
+                                <div class="muscle-cell" id="pc5">
+                                    <div class="cell-nucleus"></div>
+                                    <div class="gap-junction gap-h2"></div>
+                                    <div class="ap-wave"></div>
+                                </div>
+                                <div class="muscle-cell" id="pc6">
+                                    <div class="cell-nucleus"></div>
+                                    <div class="ap-wave"></div>
+                                </div>
+                            </div>
+                            <div class="neuron phasic-neuron">
+                                <div class="neuron-terminal"></div>
+                            </div>
+                            <div class="electrical-wave" style="top: 100px; width: 250px; left: 15px;"></div>
+                        </div>
+                        <div class="characteristics-box">
+                            <ul>
+                                <li>Gap junctions connect all cells</li>
+                                <li>Electrical signals spread to all cells</li>
+                                <li>Synchronized contraction</li>
+                                <li>Found in: GI tract, bladder, uterus</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tonic Smooth Muscle Panel -->
+                    <div class="muscle-panel" id="tonicPanel">
+                        <div class="panel-title">Tonic Smooth Muscle (Multi Unit)</div>
+                        <div class="muscle-visualization">
+                            <div class="tonic-cells" id="tonicCells">
+                                <div class="tonic-cell" id="tc1">
+                                    <div class="cell-nucleus"></div>
+                                </div>
+                                <div class="tonic-cell" id="tc2">
+                                    <div class="cell-nucleus"></div>
+                                </div>
+                                <div class="tonic-cell" id="tc3">
+                                    <div class="cell-nucleus"></div>
+                                </div>
+                            </div>
+                            <div class="tonic-neurons">
+                                <div class="neuron tonic-neuron">
+                                    <div class="neuron-terminal"></div>
+                                    <div class="varicosity var1">V</div>
+                                    <div class="varicosity var2">V</div>
+                                </div>
+                                <div class="neuron tonic-neuron">
+                                    <div class="neuron-terminal"></div>
+                                    <div class="varicosity var1">V</div>
+                                    <div class="varicosity var2">V</div>
+                                </div>
+                                <div class="neuron tonic-neuron">
+                                    <div class="neuron-terminal"></div>
+                                    <div class="varicosity var1">V</div>
+                                    <div class="varicosity var2">V</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="characteristics-box">
+                            <ul>
+                                <li>Individual cell innervation</li>
+                                <li>Independent cell control</li>
+                                <li>Graded force through recruitment</li>
+                                <li>Found in: Large blood vessels, iris, ciliary muscle</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                        <span>Phasic Muscle Cell</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: linear-gradient(135deg, #4facfe, #00f2fe);"></div>
+                        <span>Tonic Muscle Cell</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ffd700;"></div>
+                        <span>Gap Junction</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #8e44ad;"></div>
+                        <span>Nucleus</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: radial-gradient(circle, #e67e22, #d35400);"></div>
+                        <span>Nerve Terminal</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: radial-gradient(circle, #e74c3c, #c0392b);"></div>
+                        <span>Varicosity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentView = 'comparison';
+        let animationInterval;
+        
+        function showPhasic() {
+            clearAnimations();
+            currentView = 'phasic';
+            
+            // Hide tonic panel
+            document.getElementById('tonicPanel').style.opacity = '0.3';
+            document.getElementById('phasicPanel').style.opacity = '1';
+            
+            // Activate phasic animation
+            const phasicCells = document.getElementById('phasicCells');
+            phasicCells.classList.add('phasic-active');
+            
+            // Animate synchronized contraction
+            let wave = 0;
+            animationInterval = setInterval(() => {
+                const cells = document.querySelectorAll('#phasicCells .muscle-cell');
+                cells.forEach((cell, index) => {
+                    setTimeout(() => {
+                        cell.classList.add('contracting', 'active');
+                        setTimeout(() => {
+                            cell.classList.remove('contracting', 'active');
+                        }, 1500);
+                    }, index * 100);
+                });
+                wave++;
+            }, 3000);
+        }
+        
+        function showTonic() {
+            clearAnimations();
+            currentView = 'tonic';
+            
+            // Hide phasic panel
+            document.getElementById('phasicPanel').style.opacity = '0.3';
+            document.getElementById('tonicPanel').style.opacity = '1';
+            
+            // Animate individual cell contractions
+            animationInterval = setInterval(() => {
+                const cells = document.querySelectorAll('#tonicCells .tonic-cell');
+                // Random independent contractions
+                cells.forEach((cell) => {
+                    if (Math.random() > 0.5) {
+                        cell.classList.add('contracting');
+                        setTimeout(() => {
+                            cell.classList.remove('contracting');
+                        }, 1500);
+                    }
+                });
+            }, 2000);
+        }
+        
+        function showComparison() {
+            clearAnimations();
+            currentView = 'comparison';
+            
+            // Show both panels
+            document.getElementById('phasicPanel').style.opacity = '1';
+            document.getElementById('tonicPanel').style.opacity = '1';
+            
+            // Animate both types
+            // Phasic - synchronized
+            const phasicInterval = setInterval(() => {
+                const phasicCells = document.querySelectorAll('#phasicCells .muscle-cell');
+                phasicCells.forEach((cell, index) => {
+                    setTimeout(() => {
+                        cell.classList.add('contracting', 'active');
+                        setTimeout(() => {
+                            cell.classList.remove('contracting', 'active');
+                        }, 1500);
+                    }, index * 100);
+                });
+            }, 4000);
+            
+            // Tonic - independent
+            const tonicInterval = setInterval(() => {
+                const tonicCells = document.querySelectorAll('#tonicCells .tonic-cell');
+                tonicCells.forEach((cell) => {
+                    if (Math.random() > 0.6) {
+                        cell.classList.add('contracting');
+                        setTimeout(() => {
+                            cell.classList.remove('contracting');
+                        }, 1500);
+                    }
+                });
+            }, 2000);
+            
+            animationInterval = {phasic: phasicInterval, tonic: tonicInterval};
+        }
+        
+        function clearAnimations() {
+            if (animationInterval) {
+                if (typeof animationInterval === 'object') {
+                    clearInterval(animationInterval.phasic);
+                    clearInterval(animationInterval.tonic);
+                } else {
+                    clearInterval(animationInterval);
+                }
+            }
+            
+            // Remove all animation classes
+            document.querySelectorAll('.muscle-cell, .tonic-cell').forEach(cell => {
+                cell.classList.remove('contracting', 'active');
+            });
+            
+            document.getElementById('phasicCells').classList.remove('phasic-active');
+        }
+        
+        function resetSimulation() {
+            clearAnimations();
+            currentView = 'comparison';
+            
+            // Reset opacity
+            document.getElementById('phasicPanel').style.opacity = '1';
+            document.getElementById('tonicPanel').style.opacity = '1';
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            resetSimulation();
+            console.log('Smooth Muscle Types Simulation Ready!');
+        });
+    </script>
+</body>
+</html>

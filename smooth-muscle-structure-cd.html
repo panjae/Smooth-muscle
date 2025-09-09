@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 13.II - Smooth Muscle Structure (C & D)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #2c3e50;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .page-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            min-height: calc(100vh - 40px);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #1e3c72;
+        }
+        
+        .header h1 {
+            font-size: 2.3em;
+            color: #1e3c72;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            color: #546e7a;
+            font-style: italic;
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #1e3c72;
+            margin-bottom: 25px;
+        }
+        
+        .intro-box p {
+            font-size: 1.05em;
+            color: #34495e;
+            line-height: 1.7;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1.3fr 2fr 1.3fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .section-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .section-card h2 {
+            color: #1e3c72;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .subsection {
+            margin-bottom: 18px;
+        }
+        
+        .subsection h3 {
+            color: #2c3e50;
+            font-size: 1.05em;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            padding: 6px 10px;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
+        /* Figure 13.3 - Ca2+ Sources Diagram */
+        .figure-container {
+            background: #f8f9fa;
+            border: 2px solid #1e3c72;
+            border-radius: 12px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .figure-title {
+            text-align: center;
+            color: #1e3c72;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .ca-sources-diagram {
+            width: 100%;
+            height: 550px;
+            position: relative;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .channel-box {
+            background: #e3f2fd;
+            padding: 8px;
+            border-radius: 6px;
+            margin: 8px 0;
+            border-left: 3px solid #2196f3;
+            font-size: 0.85em;
+        }
+        
+        .receptor-box {
+            background: #fce4ec;
+            padding: 8px;
+            border-radius: 6px;
+            margin: 8px 0;
+            border-left: 3px solid #e91e63;
+            font-size: 0.85em;
+        }
+        
+        .pathway-table {
+            grid-column: 1 / -1;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border: 2px solid #1e3c72;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .pathway-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-size: 0.95em;
+        }
+        
+        .pathway-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 0.85em;
+        }
+        
+        .pathway-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .key-point {
+            grid-column: 1 / -1;
+            background: #fef9e7;
+            border: 2px solid #f39c12;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .key-point h3 {
+            color: #e67e22;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .key-point p {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        .dimension {
+            color: #e91e63;
+            font-weight: 600;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+        
+        .tooltip.show {
+            opacity: 1;
+        }
+        
+        .interactive-element {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .interactive-element:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 968px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .page-container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="header">
+            <h1>Chapter 13. II. STRUCTURE</h1>
+            <div class="subtitle">C. Membrane Systems & D. Neuromuscular Junction</div>
+        </div>
+
+        <div class="intro-box">
+            <p>
+                Contraction in smooth muscle is initiated when intracellular <strong>Ca²⁺ concentration rises above rest (0.1 μM)</strong>. 
+                Unlike striated muscle with T-tubules and SR tetrads, smooth muscle uses <span class="highlight-box">caveolae</span> 
+                and multiple Ca²⁺ sources including sarcolemmal influx and SR release via both CICR and IP₃ pathways.
+            </p>
+        </div>
+
+        <div class="main-content">
+            <div class="section-card">
+                <h2>🔬 C. Membrane Systems</h2>
+                
+                <div class="subsection">
+                    <h3>1. Sarcolemma</h3>
+                    <ul class="feature-list">
+                        <li><strong>NO T-tubules</strong> (vs skeletal)</li>
+                        <li><span class="highlight-box">Caveolae</span>:
+                            <div class="channel-box">
+                                • 50-100 nm flask-shaped pockets<br>
+                                • Form 15-30 nm junctions with SR<br>
+                                • Contain lipid rafts
+                            </div>
+                        </li>
+                        <li>Lipid rafts enriched with:
+                            <div class="receptor-box">
+                                • GPCRs<br>
+                                • Signaling molecules<br>
+                                • L-type Ca²⁺ channels
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>2. Sarcoplasmic Reticulum</h3>
+                    <ul class="feature-list">
+                        <li>Extensive tubular networks</li>
+                        <li>Ca²⁺ concentration: <span class="dimension">~1 mM</span></li>
+                        <li>Two Ca²⁺-release channels:
+                            <div class="channel-box">
+                                <strong>• CICR channels</strong><br>
+                                &nbsp;&nbsp;- Opened by Ca²⁺ influx<br>
+                                &nbsp;&nbsp;- Ca²⁺ sparks visible<br>
+                                <strong>• IP₃-gated channels</strong><br>
+                                &nbsp;&nbsp;- GPCR activation<br>
+                                &nbsp;&nbsp;- Hormone/NT response
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Figure 13.3 - Central Ca2+ Sources Diagram -->
+            <div class="figure-container">
+                <div class="figure-title">Figure 13.3. Ca²⁺ Sources</div>
+                
+                <!-- CA Signaling PNG Image Section -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img src="ca2_signaling.png" alt="Calcium Signaling Pathways in Smooth Muscle" 
+                         style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <p style="font-size: 0.9em; color: #546e7a; margin-top: 8px; font-style: italic;">
+                        Ca²⁺ signaling pathways showing extracellular influx, CICR, and IP₃-mediated release mechanisms
+                    </p>
+                </div>
+                
+                <div class="ca-sources-diagram">
+                    <svg width="100%" height="100%" viewBox="0 0 600 550">
+                        <!-- Cell membrane -->
+                        <rect x="50" y="50" width="500" height="450" rx="20" 
+                              fill="#fef5e7" stroke="#8b4513" stroke-width="3"/>
+                        
+                        <!-- Sarcolemma label -->
+                        <text x="300" y="35" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3c72">
+                            Sarcolemma
+                        </text>
+                        
+                        <!-- Caveolus structure -->
+                        <path d="M 150 50 C 150 80, 170 80, 170 50" 
+                              fill="#e3f2fd" stroke="#2196f3" stroke-width="2" class="interactive-element" id="caveolus"/>
+                        <text x="160" y="100" text-anchor="middle" font-size="11" fill="#2196f3">Caveolus</text>
+                        
+                        <!-- L-type Ca2+ channel -->
+                        <rect x="250" y="45" width="20" height="30" rx="3" 
+                              fill="#ff9800" stroke="#f57c00" stroke-width="2" class="interactive-element" id="ltype"/>
+                        <text x="260" y="40" text-anchor="middle" font-size="10" fill="#f57c00">L-type Ca²⁺</text>
+                        
+                        <!-- GPCR -->
+                        <ellipse cx="400" cy="60" rx="25" ry="15" 
+                                fill="#e91e63" stroke="#c2185b" stroke-width="2" class="interactive-element" id="gpcr"/>
+                        <text x="400" y="65" text-anchor="middle" font-size="10" fill="white">GPCR</text>
+                        
+                        <!-- Sarcoplasmic Reticulum -->
+                        <rect x="100" y="250" width="400" height="150" rx="15" 
+                              fill="#e8eaf6" stroke="#5e35b1" stroke-width="2"/>
+                        <text x="300" y="275" text-anchor="middle" font-size="13" font-weight="bold" fill="#5e35b1">
+                            Sarcoplasmic Reticulum (SR)
+                        </text>
+                        
+                        <!-- CICR channel on SR -->
+                        <rect x="180" y="245" width="25" height="35" rx="5" 
+                              fill="#4caf50" stroke="#388e3c" stroke-width="2" class="interactive-element" id="cicr"/>
+                        <text x="192" y="235" text-anchor="middle" font-size="10" fill="#388e3c">CICR</text>
+                        <text x="192" y="225" text-anchor="middle" font-size="10" fill="#388e3c">channel</text>
+                        
+                        <!-- IP3-gated channel on SR -->
+                        <rect x="380" y="245" width="25" height="35" rx="5" 
+                              fill="#9c27b0" stroke="#7b1fa2" stroke-width="2" class="interactive-element" id="ip3r"/>
+                        <text x="392" y="235" text-anchor="middle" font-size="10" fill="#7b1fa2">IP₃-gated</text>
+                        <text x="392" y="225" text-anchor="middle" font-size="10" fill="#7b1fa2">Ca²⁺ channel</text>
+                        
+                        <!-- Ca2+ ions -->
+                        <circle cx="260" cy="120" r="10" fill="#ffd700" stroke="#ffa000" stroke-width="2" class="interactive-element"/>
+                        <text x="260" y="125" text-anchor="middle" font-size="9" font-weight="bold">Ca²⁺</text>
+                        
+                        <circle cx="192" cy="320" r="10" fill="#ffd700" stroke="#ffa000" stroke-width="2"/>
+                        <text x="192" y="325" text-anchor="middle" font-size="9" font-weight="bold">Ca²⁺</text>
+                        
+                        <circle cx="392" cy="320" r="10" fill="#ffd700" stroke="#ffa000" stroke-width="2"/>
+                        <text x="392" y="325" text-anchor="middle" font-size="9" font-weight="bold">Ca²⁺</text>
+                        
+                        <circle cx="300" cy="180" r="10" fill="#ffd700" stroke="#ffa000" stroke-width="2"/>
+                        <text x="300" y="185" text-anchor="middle" font-size="9" font-weight="bold">Ca²⁺</text>
+                        
+                        <!-- PLC and IP3 pathway -->
+                        <ellipse cx="450" cy="120" rx="20" ry="15" 
+                                fill="#ff5722" stroke="#e64a19" stroke-width="2"/>
+                        <text x="450" y="125" text-anchor="middle" font-size="10" fill="white">PLC</text>
+                        
+                        <circle cx="450" cy="180" r="12" fill="#ff9800" stroke="#f57c00" stroke-width="2"/>
+                        <text x="450" y="185" text-anchor="middle" font-size="10" fill="white">IP₃</text>
+                        
+                        <!-- Arrows showing pathways -->
+                        <!-- Step 1: Ca2+ influx -->
+                        <path d="M 260 75 L 260 110" stroke="#ff9800" stroke-width="2" 
+                              marker-end="url(#arrowOrange)" stroke-dasharray="5,3"/>
+                        <text x="280" y="95" font-size="10" fill="#ff9800">① Ca²⁺ influx</text>
+                        
+                        <!-- Step 2: Ca2+ triggers CICR -->
+                        <path d="M 250 130 L 210 240" stroke="#4caf50" stroke-width="2" 
+                              marker-end="url(#arrowGreen)" stroke-dasharray="5,3"/>
+                        <text x="180" y="190" font-size="10" fill="#4caf50">② Ca²⁺ release</text>
+                        <text x="180" y="200" font-size="10" fill="#4caf50">from SR</text>
+                        
+                        <!-- Step 3: GPCR to PLC -->
+                        <path d="M 420 70 L 435 110" stroke="#e91e63" stroke-width="2" 
+                              marker-end="url(#arrowPink)"/>
+                        <text x="430" y="90" font-size="9" fill="#e91e63">Ligand</text>
+                        
+                        <!-- Step 4: PLC to IP3 -->
+                        <path d="M 450 135 L 450 165" stroke="#ff5722" stroke-width="2" 
+                              marker-end="url(#arrowRed)"/>
+                        
+                        <!-- Step 5: IP3 to SR -->
+                        <path d="M 440 190 L 410 240" stroke="#9c27b0" stroke-width="2" 
+                              marker-end="url(#arrowPurple)" stroke-dasharray="5,3"/>
+                        <text x="420" y="215" font-size="10" fill="#9c27b0">③ IP₃</text>
+                        
+                        <!-- SERCA pump -->
+                        <rect x="280" y="395" width="40" height="20" rx="5" 
+                              fill="#00bcd4" stroke="#0097a7" stroke-width="2"/>
+                        <text x="300" y="409" text-anchor="middle" font-size="10" fill="white">SERCA</text>
+                        
+                        <!-- Ca2+ concentration indicators -->
+                        <text x="300" y="340" text-anchor="middle" font-size="12" font-weight="bold" fill="#5e35b1">
+                            [Ca²⁺] ~1 mM
+                        </text>
+                        
+                        <text x="300" y="150" text-anchor="middle" font-size="11" fill="#34495e">
+                            Cytoplasm
+                        </text>
+                        <text x="300" y="165" text-anchor="middle" font-size="10" fill="#7f8c8d">
+                            Rest: [Ca²⁺] = 0.1 μM
+                        </text>
+                        
+                        <!-- Process labels -->
+                        <rect x="70" y="420" width="120" height="60" rx="5" 
+                              fill="#fff9c4" stroke="#f9a825" stroke-width="1"/>
+                        <text x="130" y="440" text-anchor="middle" font-size="10" font-weight="bold" fill="#f57f17">
+                            Three Ca²⁺ Sources:
+                        </text>
+                        <text x="80" y="455" font-size="9" fill="#34495e">1. L-type channels</text>
+                        <text x="80" y="467" font-size="9" fill="#34495e">2. CICR from SR</text>
+                        <text x="80" y="479" font-size="9" fill="#34495e">3. IP₃-mediated</text>
+                        
+                        <!-- Arrow definitions -->
+                        <defs>
+                            <marker id="arrowOrange" markerWidth="10" markerHeight="10" 
+                                    refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#ff9800"/>
+                            </marker>
+                            <marker id="arrowGreen" markerWidth="10" markerHeight="10" 
+                                    refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#4caf50"/>
+                            </marker>
+                            <marker id="arrowPink" markerWidth="10" markerHeight="10" 
+                                    refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#e91e63"/>
+                            </marker>
+                            <marker id="arrowRed" markerWidth="10" markerHeight="10" 
+                                    refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#ff5722"/>
+                            </marker>
+                            <marker id="arrowPurple" markerWidth="10" markerHeight="10" 
+                                    refX="9" refY="3" orient="auto">
+                                <polygon points="0 0, 10 3, 0 6" fill="#9c27b0"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>🔗 D. Neuromuscular Junction</h2>
+                
+                <p style="margin-bottom: 12px; font-size: 0.85em; color: #546e7a;">
+                    Smooth muscle is regulated by the <strong>autonomic nervous system (ANS)</strong>, 
+                    unlike skeletal muscle's somatic control:
+                </p>
+                
+                <div class="subsection">
+                    <h3>ANS Innervation</h3>
+                    <ul class="feature-list">
+                        <li><strong>Sympathetic</strong> nervous system</li>
+                        <li><strong>Parasympathetic</strong> nervous system</li>
+                        <li><strong>Enteric</strong> nervous system (GI)</li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Structural Features</h3>
+                    <ul class="feature-list">
+                        <li>Less developed than skeletal NMJ</li>
+                        <li>Pre- and postsynaptic structures similar arrangement</li>
+                        <li><span class="highlight-box">Varicosities</span>:
+                            <div class="channel-box">
+                                • Swellings along axon<br>
+                                • Multiple NMJ sites<br>
+                                • Contact multiple cells<br>
+                                • "En passant" synapses
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="subsection">
+                    <h3>Neurotransmitters</h3>
+                    <ul class="feature-list">
+                        <li>Multiple transmitters (vs ACh only)</li>
+                        <li>Location-specific:
+                            <div class="receptor-box">
+                                • NE (sympathetic)<br>
+                                • ACh (parasympathetic)<br>
+                                • NO, VIP, ATP (enteric)<br>
+                                • Peptides (various)
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <table class="pathway-table">
+            <thead>
+                <tr>
+                    <th>Ca²⁺ Source</th>
+                    <th>Activation Mechanism</th>
+                    <th>Channel/Receptor</th>
+                    <th>Contribution to Contraction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Extracellular Ca²⁺</strong></td>
+                    <td>Membrane depolarization</td>
+                    <td>L-type Ca²⁺ channels (Caveolae)</td>
+                    <td>Primary in vascular smooth muscle</td>
+                </tr>
+                <tr>
+                    <td><strong>SR (CICR)</strong></td>
+                    <td>Ca²⁺-induced Ca²⁺ release</td>
+                    <td>Ryanodine receptors</td>
+                    <td>Amplification of Ca²⁺ signal</td>
+                </tr>
+                <tr>
+                    <td><strong>SR (IP₃)</strong></td>
+                    <td>GPCR → PLC → IP₃</td>
+                    <td>IP₃ receptors</td>
+                    <td>Hormone/neurotransmitter response</td>
+                </tr>
+                <tr>
+                    <td><strong>ROCCs</strong></td>
+                    <td>Receptor binding</td>
+                    <td>Receptor-operated channels</td>
+                    <td>Minor, but causes depolarization</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="key-point">
+            <h3>💡 Key Membrane-Function Relationships</h3>
+            <p>
+                <strong>Caveolae replace T-tubules:</strong> These 50-100 nm invaginations concentrate signaling molecules 
+                and Ca²⁺ channels, forming specialized microdomains for excitation-contraction coupling. 
+                The <strong>narrow 15-30 nm junctions with SR</strong> enable efficient Ca²⁺-induced Ca²⁺ release. 
+                Unlike skeletal muscle's single neurotransmitter system, smooth muscle responds to 
+                <strong>hundreds of ligands</strong> through GPCRs, allowing precise organ-specific regulation.
+            </p>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // Interactive elements for Figure 13.3
+        document.querySelectorAll('.interactive-element').forEach(element => {
+            element.addEventListener('mouseenter', function(e) {
+                const tooltip = document.getElementById('tooltip');
+                let text = '';
+                
+                switch(this.id) {
+                    case 'caveolus':
+                        text = 'Caveolae: Flask-shaped invaginations, 50-100 nm, rich in signaling molecules';
+                        break;
+                    case 'ltype':
+                        text = 'L-type Ca²⁺ channel: Voltage-gated, primary Ca²⁺ influx pathway';
+                        break;
+                    case 'gpcr':
+                        text = 'GPCR: G-protein coupled receptor, activates PLC → IP₃ pathway';
+                        break;
+                    case 'cicr':
+                        text = 'CICR channel: Ca²⁺-induced Ca²⁺ release, amplifies Ca²⁺ signal';
+                        break;
+                    case 'ip3r':
+                        text = 'IP₃ receptor: Opens in response to IP₃, releases SR Ca²⁺ stores';
+                        break;
+                }
+                
+                if (text) {
+                    tooltip.textContent = text;
+                    tooltip.style.left = e.pageX + 10 + 'px';
+                    tooltip.style.top = e.pageY - 30 + 'px';
+                    tooltip.classList.add('show');
+                }
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                document.getElementById('tooltip').classList.remove('show');
+            });
+        });
+    </script>
+</body>
+</html>
